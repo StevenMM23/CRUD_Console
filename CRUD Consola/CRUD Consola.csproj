@@ -61,6 +61,7 @@
     <Compile Include="People.cs" />
     <Compile Include="PeopleDB.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="ProgramMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
