@@ -1,4 +1,5 @@
 ﻿using System;
+using ConsoleTables;
 
 namespace CRUD_Consola
 {
@@ -57,10 +58,12 @@ namespace CRUD_Consola
             PeopleDB people = new PeopleDB();
             var x = people.GetAllPeople();
 
+            var table = new ConsoleTable("ID","Name","Age");
             foreach (var person in x)
             {
-                Console.WriteLine($"{person.ID} | {person.Name} | {person.Age}");
+                table.AddRow(person.ID, person.Name, person.Age);
             }
+            table.Write();
         }
 
         public static void Insert()

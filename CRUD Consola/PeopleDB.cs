@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using ConsoleTables;
 using CRUD_Consola;
 
 
@@ -72,6 +73,7 @@ public class PeopleDB
     public void Obtain(int id)
     {
         string query = "select id,name,age from people where id = @id";
+        ConsoleTable table = new ConsoleTable("ID","Name","Age");
 
         using (SqlConnection connection = new SqlConnection(connectionString))
         {
@@ -82,8 +84,9 @@ public class PeopleDB
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
-                    Console.WriteLine($" ID: {reader[0]}  |  Name: {reader[1]}  |  Age: {reader[2]}");
+                    table.AddRow(reader[0],reader[1],reader[2]);
                 }
+                table.Write();
                 reader.Close();
                 connection.Close();
             }
